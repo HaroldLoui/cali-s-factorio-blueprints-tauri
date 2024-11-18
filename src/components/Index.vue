@@ -1,0 +1,9 @@
+<template>
+  <h1>欢迎使用CaliFall的Factorio工具盒</h1>
+  <p>目前已实现的功能：</p>
+  <ul>
+    <li>生成彩色显示屏</li>
+    <li>生成供彩色显示屏使用的包含彩色图片信息的常量运算器</li>
+  </ul>
+  <footer>联系方式：BiliBili搜索CaliFall</footer>
+</template>
