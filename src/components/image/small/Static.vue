@@ -30,6 +30,9 @@
             <el-form-item label="">
               <span>注：务必和显示屏相同</span>
             </el-form-item>
+            <el-form-item label="">
+              <span>注：必须启用太空时代DLC</span>
+            </el-form-item>
           </el-form>
         </el-card>
         <el-card style="margin-top: 5px;">
@@ -78,11 +81,11 @@
 import { reactive, ref } from "vue";
 import { invoke, convertFileSrc } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
-import BpContent from "./common/BpContent.vue";
+import BpContent from "../../common/BpContent.vue";
 
 const form = reactive({
-  width: 1,
-  height: 1,
+  width: 32,
+  height: 32,
   originalPath: "",
   showPath: "",
 });
@@ -91,6 +94,10 @@ const onChooseImage = async () => {
   const file = await open({
     multiple: false,
     directory: false,
+    filters: [{
+      name: "",
+      extensions: ["png", "jpg", "jpeg"]
+    }],
   });
   if (file) {
     form.originalPath = file;
@@ -109,7 +116,7 @@ async function generateContent() {
     })
     return;
   }
-  bpContent.value = await invoke("generate_image_bp", { form, });
+  bpContent.value = await invoke("generate_mini_static_image_bp", { form, });
 }
 </script>
 

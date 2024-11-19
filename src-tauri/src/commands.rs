@@ -2,7 +2,10 @@ use serde::{Deserialize, Serialize};
 use tauri::State;
 
 use crate::{
-    core::{generate_image_blueprint, generate_screen_blueprint}, AppData
+    core::{
+        generate_mini_dynamic_image_blueprint, generate_mini_static_image_blueprint, generate_screen_blueprint, get_gif_duration
+    }, 
+    AppData
 };
 
 #[derive(Serialize, Deserialize)]
@@ -49,13 +52,41 @@ pub struct ImageForm {
     original_path: String,
 }
 
-/// 生成图片蓝图
+/// 生成静态小图片蓝图
 #[tauri::command]
-pub fn generate_image_bp(form: ImageForm, state: State<'_, AppData>) -> String {
-    let result = generate_image_blueprint(
+pub fn generate_mini_static_image_bp(form: ImageForm, state: State<'_, AppData>) -> String {
+    let result = generate_mini_static_image_blueprint(
         &form.original_path, 
         form.width, 
         form.height, 
+        state.inner()
+    );
+    match result {
+        Ok(res) => res,
+        Err(e) => e.to_string(),
+    }
+}
+
+/// 获取gif动图帧间间隔
+#[tauri::command]
+pub fn get_gif_tick(path: String) -> u32 {
+    match get_gif_duration(path) {
+        Ok(tick) => tick,
+        Err(e) => {
+            println!("{}", e.to_string());
+            0
+        },
+    }
+}
+
+/// 生成动态态小图片蓝图
+#[tauri::command]
+pub fn generate_mini_dynamic_image_bp(form: ImageForm, state: State<'_, AppData>) -> String {
+    let result = generate_mini_dynamic_image_blueprint(
+        &form.original_path, 
+        form.width, 
+        form.height, 
+        9,
         state.inner()
     );
     match result {

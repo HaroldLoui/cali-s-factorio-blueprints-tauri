@@ -22,7 +22,9 @@ pub fn run() {
         .plugin(tauri_plugin_shell::init())
         .invoke_handler(tauri::generate_handler![
             generate_screen_bp,
-            generate_image_bp
+            generate_mini_static_image_bp,
+            generate_mini_dynamic_image_bp,
+            get_gif_tick,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

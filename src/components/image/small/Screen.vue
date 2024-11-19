@@ -30,6 +30,9 @@
             <el-form-item label="">
               <span>注：像素上限为2985</span>
             </el-form-item>
+            <el-form-item label="">
+              <span>注：必须启用太空时代DLC</span>
+            </el-form-item>
           </el-form>
         </el-card>
 
@@ -72,13 +75,14 @@
 </template>
 
 <script setup lang="ts">
+
 import { reactive, ref } from "vue";
 import { invoke } from "@tauri-apps/api/core";
-import BpContent from "./common/BpContent.vue";
+import BpContent from "../../common/BpContent.vue";
 
 const form = reactive({
-  width: 1,
-  height: 1,
+  width: 32,
+  height: 32,
   redLine: true,
   greenLine: false,
   keepOpen: true,

@@ -1,7 +1,7 @@
 <template>
   <div class="box_common">
     <div class="bp_content_box">{{ bpContent }}</div>
-    <div class="btn" style="width: 510px;">
+    <div class="btn" style="width: 479px;">
       <el-button type="primary" style="width: 100%;" @click="copyContent">复制蓝图</el-button>
     </div>
   </div>
@@ -34,8 +34,8 @@ const copyContent = async () => {
 <style scoped>
 .bp_content_box {
   padding: 5px;
-  width: 100%;
-  height: 460px;
+  width: 98%;
+  height: 500px;
   border: 1px solid #ccc;
   overflow-y: auto;
   word-wrap: break-word;

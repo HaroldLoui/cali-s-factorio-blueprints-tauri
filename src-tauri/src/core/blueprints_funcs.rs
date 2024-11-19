@@ -423,6 +423,7 @@ pub fn generate_mini_dynamic_image_blueprint<P: AsRef<Path>>(
     control_dc_entity["position_x"] = json!(0.5);
     control_dc_entity["position_y"] = json!(-1.0);
     control_dc_entity["direction"] = json!(DirectionType::SOUTH.value());
+    bp_object.add_entity(&mut control_dc_entity, 0);
 
     // 生成控制模块中的算术运算器
     let mut control_ac_object = ArithmeticCombinator::new(None);
@@ -434,6 +435,7 @@ pub fn generate_mini_dynamic_image_blueprint<P: AsRef<Path>>(
     control_ac_entity["position_x"] = json!(1.5);
     control_ac_entity["position_y"] = json!(-1.0);
     control_ac_entity["direction"] = json!(DirectionType::SOUTH.value());
+    bp_object.add_entity(&mut control_ac_entity, 0);
 
     // 连接控制模块信号线
     bp_object.connect_entity(

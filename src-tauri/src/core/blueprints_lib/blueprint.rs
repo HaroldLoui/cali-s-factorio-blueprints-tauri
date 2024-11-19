@@ -75,7 +75,7 @@ impl BluePrint {
     }
 
     pub fn add_entity(&mut self, entity: &mut Value, entity_number: i64) {
-        if entity_number > 0 {
+        if entity_number == 0 {
             entity["entity_number"] = json!(self.entities.len() + 1);
         }
         self.entities.push(entity.clone());

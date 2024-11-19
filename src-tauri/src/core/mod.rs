@@ -4,7 +4,12 @@ mod blueprints_consts;
 mod blueprints_funcs;
 mod blueprints_lib;
 
-pub use blueprints_funcs::{generate_image_blueprint, generate_screen_blueprint};
+pub use blueprints_funcs::{
+    generate_mini_static_image_blueprint, 
+    generate_mini_dynamic_image_blueprint,
+    generate_screen_blueprint,
+    get_gif_duration,
+};
 
 #[derive(Debug)]
 pub struct BluePrintError(String);

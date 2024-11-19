@@ -1,13 +1,16 @@
 <template>
-  <el-tabs v-model="activeTab" type="border-card">
+  <el-tabs v-model="activeTab" type="border-card" class="app-tab-content">
     <el-tab-pane name="tab1" label="欢迎页面">
-      <Index />
+      <Welcome />
     </el-tab-pane>
-    <el-tab-pane name="tab2" label="显示屏生成">
-      <Screen />
+    <el-tab-pane name="tab2" label="小彩图生成">
+      <SmallImage />
     </el-tab-pane>
-    <el-tab-pane name="tab3" label="图片生成">
-      <Image />
+    <el-tab-pane name="tab3" label="大彩图生成（施工中）">
+      大彩图生成
+    </el-tab-pane>
+    <el-tab-pane name="tab4" label="蓝图编辑（施工中）">
+      大彩图生成
     </el-tab-pane>
   </el-tabs>
 </template>
@@ -15,21 +18,19 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import Index from "./components/Index.vue";
-import Screen from "./components/Screen.vue";
-import Image from "./components/Image.vue";
+import Welcome from "./components/Welcome.vue";
+import SmallImage from "./components/image/small/Index.vue";
 
 const activeTab = ref<string>("tab1");
-
 </script>
 
 <style>
-.el-tabs__content {
-  height: 510px;
+.app-tab-content>.el-tabs__content {
+  height: 620px;
 }
 
 .el-col {
-  height: 510px;
+  height: 550px;
 }
 
 .el-card__header,

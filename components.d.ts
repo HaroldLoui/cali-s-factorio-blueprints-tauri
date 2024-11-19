@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BpContent: typeof import('./src/components/common/BpContent.vue')['default']
+    Dynamic: typeof import('./src/components/image/small/Dynamic.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
@@ -20,7 +21,9 @@ declare module 'vue' {
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     Image: typeof import('./src/components/Image.vue')['default']
-    Index: typeof import('./src/components/Index.vue')['default']
-    Screen: typeof import('./src/components/Screen.vue')['default']
+    Index: typeof import('./src/components/image/small/Index.vue')['default']
+    Screen: typeof import('./src/components/image/small/Screen.vue')['default']
+    Static: typeof import('./src/components/image/small/Static.vue')['default']
+    Welcome: typeof import('./src/components/Welcome.vue')['default']
   }
 }
