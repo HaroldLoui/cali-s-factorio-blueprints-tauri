@@ -8,8 +8,6 @@ pub struct DeciderCombinator {
     pe: Entity,
     name: String,
     control_behavior: Value,
-    conditions: Value,
-    outputs: Value,
 }
 
 /// 添加条件参数
@@ -70,10 +68,8 @@ impl DeciderCombinator {
         let entity = entity.unwrap_or(Value::default());
         let mut combinator = DeciderCombinator {
             pe: Entity::new(Some(entity.clone())),
-            name: "constant-combinator".to_string(),
+            name: "decider-combinator".to_string(),
             control_behavior: entity["control_behavior"].clone(),
-            conditions: Value::default(),
-            outputs: Value::default(),
         };
         if combinator.control_behavior.is_null() {
             combinator.init_control_behavior();
@@ -88,8 +84,6 @@ impl DeciderCombinator {
                 "outputs": [],
             }
         });
-        self.conditions = json!([]);
-        self.outputs = json!([]);
     }
 
     /// 添加条件
@@ -135,7 +129,7 @@ impl DeciderCombinator {
                 item["second_signal"]["type"] = json!(second_signal_type);
             }
         }
-        let conditions = self.conditions.as_array_mut().unwrap();
+        let conditions = self.control_behavior["decider_conditions"]["conditions"].as_array_mut().unwrap();
         conditions.push(item);
     }
 
@@ -163,7 +157,7 @@ impl DeciderCombinator {
                 item["signal"]["type"] = json!(signal_type);
             }
         }
-        let outputs = self.outputs.as_array_mut().unwrap();
+        let outputs = self.control_behavior["decider_conditions"]["outputs"].as_array_mut().unwrap();
         outputs.push(item);
     }
 
@@ -171,8 +165,6 @@ impl DeciderCombinator {
         let mut entity = self.pe.get_dict();
         entity["name"] = json!(self.name);
         entity["control_behavior"] = json!(self.control_behavior);
-        entity["conditions"] = json!(self.conditions);
-        entity["outputs"] = json!(self.outputs);
         entity
     }
 }

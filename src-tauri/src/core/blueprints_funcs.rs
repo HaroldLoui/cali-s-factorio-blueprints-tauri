@@ -495,12 +495,12 @@ mod tests {
 
     #[test]
     fn test_rgb_list() {
-        let image_rs_path = "C:/Devlopment/workspace/bp/image_rs.txt";
-        let image_rs_json_path = "C:/Devlopment/workspace/bp/image_rs.json";
+        let image_rs_path = "C:/Devlopment/workspace/bp/gif_rs.txt";
+        let image_rs_json_path = "C:/Devlopment/workspace/bp/gif_rs.json";
         read_bp_to_json(image_rs_path, image_rs_json_path);
 
-        // let image_py_path = "C:/Devlopment/workspace/bp/image_py.txt";
-        // let image_py_json_path = "C:/Devlopment/workspace/bp/image_py.json";
+        // let image_py_path = "C:/Devlopment/workspace/bp/gif_py.txt";
+        // let image_py_json_path = "C:/Devlopment/workspace/bp/gif_py.json";
         // read_bp_to_json(image_py_path, image_py_json_path);
     }
 

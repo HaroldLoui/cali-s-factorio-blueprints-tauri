@@ -48,8 +48,20 @@ impl BluePrint {
         let mut dict = json!({"item": "blueprint"});
 
         if self.entities.len() > 0 {
-            // let enetities: Vec<Value> = self.entities.iter().map(|ele| ele.get_dict()).collect();
-            dict["entities"] = json!(self.entities.clone());
+            let entities: Vec<Value> = self.entities
+                .iter()
+                .map(|v| {
+                    let mut val = v.clone();
+                    val["position"]["x"] = v["position_x"].clone();
+                    val["position"]["y"] = v["position_y"].clone();
+                    // if let Some(map) = val.as_object_mut() {
+                    //     map.remove("position_x");
+                    //     map.remove("position_y");
+                    // }
+                    val
+                })
+                .collect();
+            dict["entities"] = json!(entities);
         }
         if self.icons.len() > 0 {
             let icons: Vec<Value> = self.icons.iter().map(|ele| ele.get_dict()).collect();

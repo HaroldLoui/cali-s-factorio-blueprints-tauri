@@ -16,6 +16,10 @@ pub struct Entity {
 impl Entity {
     pub fn new(entity: Option<Value>) -> Self {
         let entity = entity.unwrap_or(Value::default());
+        let position_x = entity["position"]["x"].as_f64()
+            .unwrap_or_else(|| entity["position_x"].as_f64().unwrap_or(0.0));
+        let position_y = entity["position"]["y"].as_f64()
+            .unwrap_or_else(|| entity["position_y"].as_f64().unwrap_or(0.0));
         Self {
             // 实体序号
             entity_number: entity["entity_number"].as_i64(),
@@ -24,9 +28,9 @@ impl Entity {
             // 类型
             entity_type: entity["type"].as_str().and_then(|v| Some(v.to_string())),
             // 位置x
-            position_x: entity["position"]["x"].as_f64().unwrap_or(0.0),
+            position_x,
             // 位置y
-            position_y: entity["position"]["y"].as_f64().unwrap_or(0.0),
+            position_y,
             // 朝向
             direction: entity["direction"].as_i64(),
             // 非共有
