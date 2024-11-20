@@ -82,7 +82,7 @@ impl ConstantCombinator {
 
         let this_filter_global_index = self.filter_count;
         let this_filter_local_index = this_filter_global_index % 1000 + 1;
-        let this_filter_section_index = this_filter_local_index / 1000 + 1;
+        let this_filter_section_index = this_filter_global_index / 1000 + 1;
 
         let sections = self.control_behavior["sections"]["sections"].as_array_mut().unwrap();
         if (sections.len() as i64) < this_filter_section_index {
@@ -96,7 +96,7 @@ impl ConstantCombinator {
             "comparator": "=",
             "count": count,
             "index": this_filter_local_index,
-            "name": signal_dict[(this_filter_global_index / 5).to_string()]["name"],
+            "name": signal_dict[(this_filter_global_index / 5).to_string()]["name"].clone(),
             "quality": quality_list[(this_filter_global_index % 5) as usize],
         });
 

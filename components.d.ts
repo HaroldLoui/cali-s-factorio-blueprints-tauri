@@ -20,7 +20,6 @@ declare module 'vue' {
     ElRow: typeof import('element-plus/es')['ElRow']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
-    Image: typeof import('./src/components/Image.vue')['default']
     Index: typeof import('./src/components/image/small/Index.vue')['default']
     Screen: typeof import('./src/components/image/small/Screen.vue')['default']
     Static: typeof import('./src/components/image/small/Static.vue')['default']

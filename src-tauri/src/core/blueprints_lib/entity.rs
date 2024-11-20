@@ -30,7 +30,7 @@ impl Entity {
             // 朝向
             direction: entity["direction"].as_i64(),
             // 非共有
-            control_behavior: Value::Null,
+            control_behavior: Value::default(),
         }
     }
 
