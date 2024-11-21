@@ -52,12 +52,24 @@ impl BluePrint {
                 .iter()
                 .map(|v| {
                     let mut val = v.clone();
-                    val["position"]["x"] = v["position_x"].clone();
-                    val["position"]["y"] = v["position_y"].clone();
-                    // if let Some(map) = val.as_object_mut() {
-                    //     map.remove("position_x");
-                    //     map.remove("position_y");
-                    // }
+                    if val["position"].is_null() {
+                        val["position"] = json!({ "x": 0, "y": 0 });
+                    } else {
+                        match (val["position"]["x"].as_f64().clone(), val["position"]["y"].as_f64().clone()) {
+                            (Some(0.0), Some(0.0)) => {
+                                val["position"]["x"] = json!(0);
+                                val["position"]["y"] = json!(0);
+                            }
+                            (Some(x), Some(y)) => {
+                                val["position"]["x"] = json!(x);
+                                val["position"]["y"] = json!(y);
+                            }
+                            _ => {
+                                val["position"]["x"] = json!(0);
+                                val["position"]["y"] = json!(0);
+                            }
+                        }
+                    }
                     val
                 })
                 .collect();

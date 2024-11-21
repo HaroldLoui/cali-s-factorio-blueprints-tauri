@@ -316,8 +316,8 @@ pub fn generate_mini_dynamic_image_blueprint<P: AsRef<Path>>(
         }
 
         let mut cc_entity = cc_object.entity();
-        cc_entity["position_x"] = json!(0.5);
-        cc_entity["position_y"] = json!((i as f32) + 0.5);
+        cc_entity["position"]["x"] = json!(0.5);
+        cc_entity["position"]["y"] = json!((i as f32) + 0.5);
         cc_entity["direction"] = json!(DirectionType::EAST.value());
         
         bp_object.add_entity(&mut cc_entity, 0);
@@ -355,8 +355,8 @@ pub fn generate_mini_dynamic_image_blueprint<P: AsRef<Path>>(
         }
 
         let mut dc_entity = dc_object.entity();
-        dc_entity["position_x"] = json!(2);
-        dc_entity["position_y"] = json!((i as f32) + 0.5);
+        dc_entity["position"]["x"] = json!(2);
+        dc_entity["position"]["y"] = json!((i as f32) + 0.5);
         dc_entity["direction"] = json!(DirectionType::EAST.value());
         bp_object.add_entity(&mut dc_entity, 0);
         image_select_dc_list.push(dc_entity.clone());
@@ -401,8 +401,8 @@ pub fn generate_mini_dynamic_image_blueprint<P: AsRef<Path>>(
         "normal".to_string()
     );
     let mut control_cc_entity = control_cc_object.entity();
-    control_cc_entity["position_x"] = json!(0.5);
-    control_cc_entity["position_y"] = json!(-2.5);
+    control_cc_entity["position"]["x"] = json!(0.5);
+    control_cc_entity["position"]["y"] = json!(-2.5);
     control_cc_entity["direction"] = json!(DirectionType::SOUTH.value());
     bp_object.add_entity(&mut control_cc_entity, 0);
 
@@ -420,8 +420,8 @@ pub fn generate_mini_dynamic_image_blueprint<P: AsRef<Path>>(
     output_params.signal_type = "virtual".to_string();
     control_dc_object.add_output(output_params);
     let mut control_dc_entity = control_dc_object.entity();
-    control_dc_entity["position_x"] = json!(0.5);
-    control_dc_entity["position_y"] = json!(-1.0);
+    control_dc_entity["position"]["x"] = json!(0.5);
+    control_dc_entity["position"]["y"] = json!(-1.0);
     control_dc_entity["direction"] = json!(DirectionType::SOUTH.value());
     bp_object.add_entity(&mut control_dc_entity, 0);
 
@@ -432,8 +432,8 @@ pub fn generate_mini_dynamic_image_blueprint<P: AsRef<Path>>(
     control_ac_object.set_second_constant(duration);
     control_ac_object.set_output_signal("signal-dot".to_string(), "virtual".to_string());
     let mut control_ac_entity = control_ac_object.entity();
-    control_ac_entity["position_x"] = json!(1.5);
-    control_ac_entity["position_y"] = json!(-1.0);
+    control_ac_entity["position"]["x"] = json!(1.5);
+    control_ac_entity["position"]["y"] = json!(-1.0);
     control_ac_entity["direction"] = json!(DirectionType::SOUTH.value());
     bp_object.add_entity(&mut control_ac_entity, 0);
 
@@ -495,13 +495,13 @@ mod tests {
 
     #[test]
     fn test_rgb_list() {
-        let image_rs_path = "C:/Devlopment/workspace/bp/gif_rs.txt";
-        let image_rs_json_path = "C:/Devlopment/workspace/bp/gif_rs.json";
-        read_bp_to_json(image_rs_path, image_rs_json_path);
+        // let image_rs_path = "C:/Devlopment/workspace/bp/image_rs.txt";
+        // let image_rs_json_path = "C:/Devlopment/workspace/bp/image_rs.json";
+        // read_bp_to_json(image_rs_path, image_rs_json_path);
 
-        // let image_py_path = "C:/Devlopment/workspace/bp/gif_py.txt";
-        // let image_py_json_path = "C:/Devlopment/workspace/bp/gif_py.json";
-        // read_bp_to_json(image_py_path, image_py_json_path);
+        let image_py_path = "C:/Devlopment/workspace/bp/gif_py.txt";
+        let image_py_json_path = "C:/Devlopment/workspace/bp/gif_py.json";
+        read_bp_to_json(image_py_path, image_py_json_path);
     }
 
     #[test]
